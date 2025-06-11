@@ -9,8 +9,8 @@ class Cars(ICars):
     
     def run(self):
         while True:
-            print("1-peržiūrėti 2-sukurti naują, 3-išeiti")
-            option = pyip.inputChoice(["1", "2", "3"])
+            print("\n1-sukurti naują 2-peržiūrėti, 3-išeiti\n")
+            option = pyip.inputChoice(["1", "2", "3"], prompt="Pasirinkite norimą veiksmą: ")
             match option:
                 case "1": 
                     new_car = self.__inputNewCar()
@@ -24,22 +24,24 @@ class Cars(ICars):
 
 
     def __inputNewCar(self) -> NewCar:
-        make = pyip.inputStr("Iveskite markę: ")
-        model = pyip.inputStr("Iveskite modelį: ")
-        color = pyip.inputStr("Iveskite spalvą: ")
-        year = pyip.inputInt("Iveskite pagaminimo metus: ")
-        price = pyip.inputFloat("Iveskite kainą: ") 
+        print("Įveskite naujo automobilio parametrus:")
+        make = pyip.inputStr("Įveskite markę: ")
+        model = pyip.inputStr("Įveskite modelį: ")
+        color = pyip.inputStr("Įveskite spalvą: ")
+        year = pyip.inputInt("Įveskite pagaminimo metus: ")
+        price = pyip.inputFloat("Įveskite kainą: ") 
 
         return NewCar(make, model, color, year, price)       
 
 
     def __inputCarFilters(self) -> CarFilter:
-        make = pyip.inputStr("Iveskite markę: ", blank=True) or None
-        model = pyip.inputStr("Iveskite modelį: ", blank=True) or None
-        color = pyip.inputStr("Iveskite spalvą: ", blank=True) or None
-        year_from = pyip.inputInt("Iveskite pagaminimo metus nuo: ", blank=True) or 0
-        year_to = pyip.inputInt("Iveskite pagaminimo metus iki: ", blank=True, greaterThan=year_from) or None
-        price_from = pyip.inputFloat("Iveskite kainą nuo: ", blank=True) or 0
-        price_to = pyip.inputFloat("Iveskite kainą iki: ", blank=True, greaterThan=price_from) or None
+        print("Įveskite ieškomo automobilio parametrus:")
+        make = pyip.inputStr("Įveskite markę: ", blank=True) or None
+        model = pyip.inputStr("Įveskite modelį: ", blank=True) or None
+        color = pyip.inputStr("Įveskite spalvą: ", blank=True) or None
+        year_from = pyip.inputInt("Įveskite pagaminimo metus nuo: ", blank=True) or 0
+        year_to = pyip.inputInt("Įveskite pagaminimo metus iki: ", blank=True, greaterThan=year_from) or None
+        price_from = pyip.inputFloat("Įveskite kainą nuo: ", blank=True) or 0
+        price_to = pyip.inputFloat("Įveskite kainą iki: ", blank=True, greaterThan=price_from) or None
 
         return CarFilter(make, model, color, year_from, year_to, price_from, price_to)         
