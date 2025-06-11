@@ -1,0 +1,7 @@
+dependency-injector==4.47.1
+prettytable==3.16.0
+PyInputPlus==0.2.12
+PySimpleValidate==0.2.12
+stdiomask==0.0.6
+typing_extensions==4.14.0
+wcwidth==0.2.13
